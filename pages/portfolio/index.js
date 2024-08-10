@@ -4,7 +4,7 @@ import Link from "next/link";
 import Footer from "@/compnents/footer";
 
 import { getPortfolio } from "@/lib/posts";
-import { Cardo } from "next/font/google";
+import "../../app/globals.css";
 
 export async function getStaticProps() {
   const allPostsData = getPortfolio();
@@ -23,7 +23,7 @@ export default function Portfolio({ allPostsData }) {
       <main>
         <h1>Portfolio</h1>
 
-        <ul>
+        <ul className="list-container">
           {allPostsData.map((post) => (
             <div key={post.id} className="list-card">
               <Link

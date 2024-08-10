@@ -46,6 +46,37 @@ a {
   line-height: 1.5rem;
 }
 
+.list-container {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.list-card {
+  width: 90%;
+  margin: 2% auto;
+  padding: 8px;
+  border: 1px solid black;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.post-content {
+  width: 90%;
+  margin: auto;
+}
+
 footer p {
   font-size: 0.75rem;
+}
+
+@media screen and (min-width: 600px) {
+  .list-container {
+    flex-direction: row;
+  }
+
+  .list-card {
+    margin: 8px;
+  }
 }
