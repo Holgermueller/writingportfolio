@@ -1,7 +1,8 @@
 export default function Header() {
   return (
-    <div>
-      <header>Thisis theheader.</header>
-    </div>
+    <header>
+      <p>Holger Mueller</p>
+      <p>Tech Writer</p>
+    </header>
   );
 }

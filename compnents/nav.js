@@ -1,7 +1,11 @@
+import Link from "next/link";
+
 export default function Nav() {
   return (
     <nav>
-      <p>This is the nav.</p>
+      <Link href="/">Home</Link>
+      <Link href="/portfolio">Portfolio</Link>
+      <Link href="/contact">Contact</Link>
     </nav>
   );
 }

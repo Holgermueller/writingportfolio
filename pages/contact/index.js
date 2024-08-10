@@ -1,7 +1,16 @@
+import Header from "@/compnents/header";
+import Nav from "@/compnents/nav";
+import Footer from "@/compnents/footer";
+
 export default function Contact() {
   return (
     <div>
-      <h1>Contact</h1>
+      <Header />
+      <Nav />
+      <main>
+        <h1>Contact</h1>
+      </main>
+      <Footer />
     </div>
   );
 }
