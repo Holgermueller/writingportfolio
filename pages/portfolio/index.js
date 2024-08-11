@@ -17,7 +17,7 @@ export async function getStaticProps() {
 
 export default function Portfolio({ allPostsData }) {
   return (
-    <div>
+    <div id="portfolio">
       <Header />
       <Nav />
       <main>

@@ -4,6 +4,26 @@ body {
   padding: 0;
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
+  width: 100vw;
+}
+
+#home,
+#portfolio,
+#contact {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex-grow: 1;
+}
+
+header,
+nav,
+footer {
+  flex-grow: 0;
+  flex-shrink: 0;
 }
 
 header,
@@ -67,16 +87,68 @@ a {
   margin: auto;
 }
 
+.contact-message {
+  width: 90%;
+  margin: auto;
+}
+
+.contact-message:last-child {
+  margin-top: 15%;
+}
+
+.links-container {
+  width: 90%;
+  margin: 10% auto;
+  text-align: center;
+}
+
+.link {
+  font-size: 1.5rem;
+  margin: 8px 0;
+}
+
+footer {
+  margin-top: 10%;
+  position: relative;
+  width: 100%;
+  text-align: center;
+  left: 0;
+  bottom: 0;
+  background-color: black;
+  color: white;
+  padding: 4px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 footer p {
   font-size: 0.75rem;
+  padding: 0 4px;
 }
 
 @media screen and (min-width: 600px) {
+  a:hover {
+    cursor: pointer;
+    color: lightseagreen;
+  }
+
   .list-container {
     flex-direction: row;
   }
 
   .list-card {
     margin: 8px;
+  }
+
+  .contact-message {
+    margin-top: 2%;
+    text-align: center;
+  }
+
+  .links-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
   }
 }
