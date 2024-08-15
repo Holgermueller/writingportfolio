@@ -17,26 +17,99 @@ JSON stands for JavaScript Object Notation. As the name suggests, a JSON is a Ja
 
 ## The Process
 
-The first thing we need to do is declare a function to do all of this. Call it anything you like. For the purposes of this tutorial, I’m calling my function convertCSVToJSON because when I learned to code, my instructor said to name things the way a seven year old would.
+The first thing we need to do is declare a function to do all of this. Call it anything you like. For the purposes of this tutorial, I’m calling my function convertCSVToJSON because when I learned to code, my instructor said to name things the way a seven year old would. It should look like this:
+
+```
+async function convertCSVToJSON(){}
+```
 
 Now that we have our function declared, we need to grab the data. (Heads up, this tutorial uses a local CSV file). To do this, use JavaScript’s built-in fetch API.
 
+```
+await fetch('./csvFile.csv')
+```
+
 Once we’ve fetched the data, we need to use a then() method to clean up the data. We do that by using the text() method.
+
+```
+await fetch('./csvFile.csv')
+    .then(response => {
+        return response.text()
+    })
+```
 
 Now that the response is nice and clean and easy to read, we use another then() method to grab the data.
 
-Once we have the data held in our variable called data, we need to do some set up before we work with it. First we need an empty array to hold onto the data once we’re done with it. Then we need to split the data up.
+```
+.then(data => {})
+```
 
-First, we’ll split the data up. Since a CSV file is a series of lines, we’ll split it up into those lines, using the break at the end of each line as the point where we make the split.
+Once we have the data held in our variable called data, we need to do some set up before we work with it. First we need an empty array to hold onto the data once we’re done with it.
+
+```
+let result = []
+```
+
+Then we need to split the data up. First, we’ll split the data up. Since a CSV file is a series of lines, we’ll split it up into those lines, using the break at the end of each line as the point where we make the split.
+
+```
+let lines = data.split('\n')
+```
 
 We also need to define the keys for the data in our JSON. For this we use the first line of the CSV file. Grab the zero-index line and split it up along the commas.
 
+```
+let keys = lines[0].split(',')
+```
+
 Now that we have our keys defined, we’re going to loop through the data, twice, using nested for loops.
 
-For the first loop, we’re looping through each line. Inside this first loop, we create an empty object that’s going to hold each of the lines. Then we create a variable called current line that we’ll use to split each line along its commas.
+For the first loop, we’re looping through each line. Inside this first loop, we create an empty object that’s going to hold each of the lines. Then we create a variable to store our current line that we’ll use to split each line along its commas.
 
-Then we create our nested loop. This loop uses the headers variable from before and matches those keys with its corresponding piece of data. Once these corresponding pieces of data are paired up, they’re shunted into their own cozy little object.
+```
+for(let i = 0; i < lines.length; i++){
+    let obj = {};
+    let currentLine = lines[i].split('');
+    ...
+}
+```
+
+Then we create our nested loop. This loop uses the keys variable from before and matches those keys with its corresponding piece of data. Once these corresponding pieces of data are paired up, they’re shunted into their own cozy little object.
+
+```
+for (let j = 0; j < keys.length; j++){
+    obj[keys[j]] = currentLine[j];
+}
+```
 
 Finally, using the push() method, we’re going to take each one of those objects and push it into our empty array from before.
+
+```
+result.push(obj);
+```
+
+In the end, you should have a function that looks like this:
+
+```
+async function createSelector() {
+  await fetch("./csvFile.csv")
+    .then((response) => {
+      return response.text();
+    })
+    .then((data) => {
+      let result = [];
+      let lines = data.split("\n");
+      let keys = lines[0].split(",");
+
+      for (let i = 1; i < lines.length; i++) {
+        let obj = {};
+        let currentLine = lines[i].split(",");
+        for (let j = 0; j < keys.length; j++) {
+          obj[keys[j]] = currentLine[j];
+        }
+        result.push(obj);
+      }
+    }
+```
 
 Now all our data is packaged up nice and ready to be worked with. With this JSON, you can display the data as a table on the DOM, or use it to create a selector on a form, and anything else you’d like to do with it.
