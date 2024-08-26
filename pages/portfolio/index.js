@@ -23,6 +23,8 @@ export default function Portfolio({ allPostsData }) {
       <main>
         <h1>Portfolio</h1>
 
+        <h2>Technical Writing</h2>
+
         <ul className="list-container">
           {allPostsData.map((post) => (
             <div key={post.id} className="list-card">
@@ -41,6 +43,8 @@ export default function Portfolio({ allPostsData }) {
             </div>
           ))}
         </ul>
+
+        <h2>Content Writing</h2>
       </main>
       <Footer />
     </div>

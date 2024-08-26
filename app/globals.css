@@ -28,8 +28,13 @@ footer {
 
 header,
 footer,
-h1 {
+h1,
+h2 {
   text-align: center;
+}
+
+h2 {
+  padding: 5% 0;
 }
 
 header {
@@ -58,6 +63,13 @@ a {
   text-decoration: none;
   color: #054fb9;
   padding: 8px;
+}
+
+#portfolio h1 {
+  width: 95%;
+  margin: auto;
+  padding: 5% 0;
+  border-bottom: 1px solid black;
 }
 
 .about-paragraph {
@@ -135,6 +147,8 @@ footer p {
 
   .list-container {
     flex-direction: row;
+    width: 95%;
+    margin: auto;
   }
 
   .list-card {
